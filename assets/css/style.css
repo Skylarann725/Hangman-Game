@@ -1,0 +1,75 @@
+.main {
+	border: dotted;
+	width: 610px;
+	float: right;
+}
+
+.second {
+	border: dotted;
+	width: 610px;
+	height: 480px;
+	float: left;
+}
+
+.star {
+	margin-bottom: 10px;
+}
+
+.vader {
+	width: 400px;
+	height: auto;
+	margin-top: 50px;
+}
+
+body {
+  background-color: black;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  color: white;
+  height: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+
+h1, h2, {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	text-transform: uppercase;
+   	margin:5px 0;
+   	text-align: center;
+}
+
+h1 {
+	font-size: 4.5em;
+	margin-bottom: 0;
+}
+
+h2 {
+	font-size: 1.6em;
+}
+
+p{
+  font-size: 1.6em;
+}
+
+button{
+  @include corners (5px);
+  background: white;
+  color: black;
+  border: solid 1px $white;
+  text-decoration:none;
+  cursor:pointer;
+  font-size:1.2em;
+  padding:16px 8px;
+  width:180px;
+  margin: 10px;
+  outline: none;
+  
+    &:hover{
+      @include transition;
+      background:$white;
+      border: solid 1px $white;
+      color:$base-color;
+    }
+}
+
+
