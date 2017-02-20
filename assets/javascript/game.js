@@ -76,6 +76,7 @@ window.onload = function() {
         //if lives is less than 1, then game is over
         if (lives < 1) {
             showLives.innerHTML = "Game Over";
+            resetGame ();
         }
 
         //if letter guessed is correct then add to correct word
@@ -100,10 +101,7 @@ window.onload = function() {
 
     //reset the game
     resetGame = function() {
-        lives = 10;
-        dashes = [];
-        guessessofar = "";
-        guessedletters = [];
+        window.onload ();
 
     }
 }
