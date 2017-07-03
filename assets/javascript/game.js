@@ -1,10 +1,11 @@
+// on window load
 window.onload = function() {
-
+    // alphabet letters array
     var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'
     ];
-
+    // correct words array
     var words = ["death star",
         "alderaan",
         "pod racer",
@@ -18,32 +19,39 @@ window.onload = function() {
         "jar jar binks"
     ];
 
+    // variables
     var lives = 10;
     var wins = 0;
     var dashes = [];
     var guessessofar = "";
     var guessedletters = [];
 
+    // grabs id from index.html to display on page
     var showLives = document.getElementById("mylives");
     var lettersGuessed = document.getElementById("guessed");
     var showWins = document.getElementById("wins");
     // var resetGame = document.getElementById("reset");
 
+    //start game function
     startGame = function() {
-        //Choose random words
+        // Choose random words
         var correctWord = words[Math.floor(Math.random() * words.length)];
         console.log(correctWord)
 
-        //Function to take word and make underscores
+        // For loop to create underscores and dashes for words
         for (i = 0; i < correctWord.length; i++) {
+            // if correctWord[i] equals a letter
             if (correctWord[i] !== " ") {
+                // then make underscore
                 dashes.push(" _ ")
+                    // else make a dash
             } else {
                 dashes.push('-')
             }
         }
 
         console.log(dashes);
+        // grabs id from index.html to display underscores and dashes on page
         document.getElementById('actualWord').innerHTML = dashes.join(' ');
 
         //key.event for user input- use key codes
@@ -54,18 +62,20 @@ window.onload = function() {
             // }
             console.log(userGuess)
 
-            // if userguess has been guessed already then alert that they already guessed it
+            // if indexOf userGuess equals -1
             if (guessedletters.indexOf(userGuess) == -1) {
+                // push userGuess into guessedletters array
                 guessedletters.push(userGuess);
                 console.log(guessedletters)
             } else {
+                // if userguess was already guessed then alert
                 console.log("does exist", userGuess)
                 alert("You already guessed that letter.");
                 return
             }
             document.getElementById('guessed').innerHTML = guessedletters.join();
 
-            //if letter is not in the word, then lives go downp
+            //if letter is not in the correctWord, then lives go down
             if (correctWord.indexOf(userGuess) == -1) {
                 lives--;
             }
@@ -80,9 +90,10 @@ window.onload = function() {
             }
 
 
-            //if letter guessed is correct then add to correct word
+            //if letter guessed is correct then add letter to correct word
             for (var i = 0; i < correctWord.length; i++) {
                 if (userGuess === correctWord[i]) {
+                    // dashes equals userguess
                     dashes[i] = userGuess;
                 }
             }
@@ -92,10 +103,12 @@ window.onload = function() {
             console.log(correctWord, dashes.join('').replace('-', ' '))
             if (correctWord === dashes.join('').replace('-', ' ')) {
                 console.log("You win!");
+                // wins increase
                 wins++;
+                // game resets with new word
                 resetGame();
             }
-
+            // adds win count into html
             showWins.innerHTML = "Wins: " + wins;
 
         }
